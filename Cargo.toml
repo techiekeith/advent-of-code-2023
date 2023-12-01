@@ -1,8 +1,14 @@
 [package]
 name = "advent-of-code-2023"
 version = "0.1.0"
+authors = ["TechieKeith <techiekeith@users.noreply.github.com>"]
 edition = "2021"
+description = "An attempt to learn Rust and solve puzzles"
+readme = "README.md"
+repository = "https://github.com/techiekeith/advent-of-code-2023"
+license = "MIT"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+regex = "1.10.2"
