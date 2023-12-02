@@ -1,7 +1,9 @@
 mod day01;
+mod day02;
 
-const DAY_FUNCTIONS: [[fn();2];1] = [
+const DAY_FUNCTIONS: [[fn();2];2] = [
     [day01::part1, day01::part2],
+    [day02::part1, day02::part2],
 ];
 
 fn main() {
