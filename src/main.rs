@@ -1,10 +1,12 @@
 mod day01;
 mod day02;
+mod day03;
 mod aoc_common;
 
-const DAY_FUNCTIONS: [[fn();2];2] = [
+const DAY_FUNCTIONS: [[fn();2];3] = [
     [day01::part1, day01::part2],
     [day02::part1, day02::part2],
+    [day03::part1, day03::part2],
 ];
 
 fn main() {
