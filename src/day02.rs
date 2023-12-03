@@ -1,6 +1,5 @@
 use std::collections::HashMap;
-use std::fs::File;
-use std::io::{BufRead, BufReader};
+use crate::aoc_common::{sum, sum_up, sum_up_with_rule};
 
 fn get_rgb_for_phrase(round: &str) -> HashMap<&str, i32> {
     let mut colour_map = HashMap::new();
@@ -376,13 +375,7 @@ mod game_power_tests {
 }
 
 fn sum_possible_game_ids(filename: &str, max: &str) -> i32 {
-    let mut sum = 0;
-    let file = File::open(filename).expect(&*format!("Failed to open {}", filename));
-    let reader = BufReader::new(file);
-    for line in reader.lines().filter_map(|result| result.ok()) {
-        sum += possible_game_id(line.as_str(), max);
-    }
-    return sum;
+    return sum_up_with_rule(filename, possible_game_id, sum, max);
 }
 
 #[cfg(test)]
@@ -396,13 +389,7 @@ mod sum_possible_game_ids_tests {
 }
 
 fn sum_game_powers(filename: &str) -> i32 {
-    let mut sum = 0;
-    let file = File::open(filename).expect(&*format!("Failed to open {}", filename));
-    let reader = BufReader::new(file);
-    for line in reader.lines().filter_map(|result| result.ok()) {
-        sum += game_power(line.as_str());
-    }
-    return sum;
+    return sum_up(filename, game_power, sum);
 }
 
 #[cfg(test)]

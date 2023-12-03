@@ -1,5 +1,6 @@
 mod day01;
 mod day02;
+mod aoc_common;
 
 const DAY_FUNCTIONS: [[fn();2];2] = [
     [day01::part1, day01::part2],

@@ -1,6 +1,5 @@
 use regex::Regex;
-use std::io::{BufRead, BufReader};
-use std::fs::File;
+use crate::aoc_common::{sum, sum_up_with_rule};
 
 const FIRST_DIGIT_ONLY_STR: &str = "\\d";
 const FIRST_DIGIT_OR_WORD_STR: &str = "\\d|one|two|three|four|five|six|seven|eight|nine";
@@ -42,9 +41,9 @@ mod digit_value_tests {
     }
 }
 
-fn first_digit(line: &str, allow_words: bool) -> i32 {
+fn first_digit(line: &str, rule: &str) -> i32 {
     let pattern_str: &str;
-    if allow_words {
+    if rule == "words" {
         pattern_str = FIRST_DIGIT_OR_WORD_STR;
     } else {
         pattern_str = FIRST_DIGIT_ONLY_STR;
@@ -60,18 +59,18 @@ mod first_digit_tests {
 
     #[test]
     fn test_first_digit_no_words() {
-        assert_eq!(first_digit("one2three4five6seveneight9ten11twelve", false), 2);
+        assert_eq!(first_digit("one2three4five6seveneight9ten11twelve", "digits"), 2);
     }
 
     #[test]
     fn test_first_digit_with_words() {
-        assert_eq!(first_digit("one2three4five6seveneight9ten11twelve", true), 1);
+        assert_eq!(first_digit("one2three4five6seveneight9ten11twelve", "words"), 1);
     }
 }
 
-fn last_digit(line: &str, allow_words: bool) -> i32 {
+fn last_digit(line: &str, rule: &str) -> i32 {
     let pattern_str: &str;
-    if allow_words {
+    if rule == "words" {
         pattern_str = LAST_DIGIT_OR_WORD_STR;
     } else {
         pattern_str = LAST_DIGIT_ONLY_STR;
@@ -87,17 +86,17 @@ mod last_digit_tests {
 
     #[test]
     fn test_last_digit_no_words() {
-        assert_eq!(last_digit("one2three4five6seveneight", false), 6);
+        assert_eq!(last_digit("one2three4five6seveneight", "digits"), 6);
     }
 
     #[test]
     fn test_last_digit_with_words() {
-        assert_eq!(last_digit("one2three4five6seveneight", true), 8);
+        assert_eq!(last_digit("one2three4five6seveneight", "words"), 8);
     }
 }
 
-fn calibration_value(line: &str, allow_words: bool) -> i32 {
-    return 10 * first_digit(line, allow_words) + last_digit(line, allow_words);
+fn calibration_value(line: &str, rule: &str) -> i32 {
+    return 10 * first_digit(line, rule) + last_digit(line, rule);
 }
 
 #[cfg(test)]
@@ -106,23 +105,17 @@ mod calibration_value_tests {
 
     #[test]
     fn test_calibration_value() {
-        assert_eq!(calibration_value("one2three4five6seveneight", false), 26);
+        assert_eq!(calibration_value("one2three4five6seveneight", "digits"), 26);
     }
 
     #[test]
     fn test_last_digit_with_words() {
-        assert_eq!(calibration_value("one2three4five6seveneight", true), 18);
+        assert_eq!(calibration_value("one2three4five6seveneight", "words"), 18);
     }
 }
 
-fn sum_calibration_values(filename: &str, allow_words: bool) -> i32 {
-    let mut sum = 0;
-    let file = File::open(filename).expect(&*format!("Failed to open {}", filename));
-    let reader = BufReader::new(file);
-    for line in reader.lines().filter_map(|result| result.ok()) {
-        sum += calibration_value(line.as_str(), allow_words);
-    }
-    return sum;
+fn sum_calibration_values(filename: &str, rule: &str) -> i32 {
+    return sum_up_with_rule(filename, calibration_value, sum, rule);
 }
 
 #[cfg(test)]
@@ -131,19 +124,19 @@ mod sum_calibration_values_tests {
 
     #[test]
     fn test_sum_calibration_values_part1() {
-        assert_eq!(sum_calibration_values("data/day01-part1-test.txt", false), 142);
+        assert_eq!(sum_calibration_values("data/day01-part1-test.txt", "digits"), 142);
     }
 
     #[test]
     fn test_sum_calibration_values_part2() {
-        assert_eq!(sum_calibration_values("data/day01-part2-test.txt", true), 281);
+        assert_eq!(sum_calibration_values("data/day01-part2-test.txt", "words"), 281);
     }
 }
 
 pub fn part1() {
-    println!("Day 1 Part 1 result: {}", sum_calibration_values("data/day01-input.txt", false));
+    println!("Day 1 Part 1 result: {}", sum_calibration_values("data/day01-input.txt", "digits"));
 }
 
 pub fn part2() {
-    println!("Day 1 Part 2 result: {}", sum_calibration_values("data/day01-input.txt", true));
+    println!("Day 1 Part 2 result: {}", sum_calibration_values("data/day01-input.txt", "words"));
 }
