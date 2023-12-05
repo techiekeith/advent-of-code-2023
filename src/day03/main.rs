@@ -1,4 +1,4 @@
-use crate::aoc_common::line_iterator;
+use crate::aoc_common::main::line_iterator;
 
 struct Number {
     value: i32,
@@ -538,7 +538,7 @@ mod read_schematic_tests {
 
     #[test]
     fn test_read_schematic() {
-        let (symbols, numbers) = read_schematic("data/day03-test.txt");
+        let (symbols, numbers) = read_schematic("data/day03/test.txt");
         assert_eq!(numbers.len(), 10);
         assert_eq!(symbols.len(), 6);
     }
@@ -561,7 +561,7 @@ mod read_schematic_part1_tests {
 
     #[test]
     fn test_read_schematic_part1() {
-        assert_eq!(read_schematic_part1("data/day03-test.txt"), 4361);
+        assert_eq!(read_schematic_part1("data/day03/test.txt"), 4361);
     }
 }
 
@@ -580,14 +580,14 @@ mod read_schematic_part2_tests {
 
     #[test]
     fn test_read_schematic_part2() {
-        assert_eq!(read_schematic_part2("data/day03-test.txt"), 467835);
+        assert_eq!(read_schematic_part2("data/day03/test.txt"), 467835);
     }
 }
 
 pub fn part1() {
-    println!("Day 3 Part 1 result: {}", read_schematic_part1("data/day03-input.txt"));
+    println!("Day 3 Part 1 result: {}", read_schematic_part1("data/day03/input.txt"));
 }
 
 pub fn part2() {
-    println!("Day 3 Part 2 result: {}", read_schematic_part2("data/day03-input.txt"));
+    println!("Day 3 Part 2 result: {}", read_schematic_part2("data/day03/input.txt"));
 }

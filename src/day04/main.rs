@@ -1,4 +1,4 @@
-use crate::aoc_common::{line_iterator, sum, sum_up};
+use crate::aoc_common::main::{line_iterator, sum, sum_up};
 
 fn get_space_separated_numbers(source: &str) -> Vec<i32> {
     return source.split(" ").filter_map(|n| n.parse::<i32>().ok()).collect();
@@ -195,7 +195,7 @@ mod score_for_file_tests {
 
     #[test]
     fn test_score_for_file() {
-        assert_eq!(score_for_file("data/day04-test.txt"), 13);
+        assert_eq!(score_for_file("data/day04/test.txt"), 13);
     }
 }
 
@@ -219,14 +219,14 @@ mod count_cards_for_file_tests {
 
     #[test]
     fn test_count_cards_for_file() {
-        assert_eq!(count_cards_for_file("data/day04-test.txt"), 30);
+        assert_eq!(count_cards_for_file("data/day04/test.txt"), 30);
     }
 }
 
 pub fn part1() {
-    println!("Day 4 Part 1 result: {}", score_for_file("data/day04-input.txt"));
+    println!("Day 4 Part 1 result: {}", score_for_file("data/day04/input.txt"));
 }
 
 pub fn part2() {
-    println!("Day 4 Part 2 result: {}", count_cards_for_file("data/day04-input.txt"));
+    println!("Day 4 Part 2 result: {}", count_cards_for_file("data/day04/input.txt"));
 }

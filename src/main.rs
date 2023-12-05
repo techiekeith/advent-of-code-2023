@@ -5,10 +5,10 @@ mod day03;
 mod day04;
 
 const DAY_FUNCTIONS: [[fn();2];4] = [
-    [day01::part1, day01::part2],
-    [day02::part1, day02::part2],
-    [day03::part1, day03::part2],
-    [day04::part1, day04::part2],
+    [day01::main::part1, day01::main::part2],
+    [day02::main::part1, day02::main::part2],
+    [day03::main::part1, day03::main::part2],
+    [day04::main::part1, day04::main::part2],
 ];
 
 fn main() {

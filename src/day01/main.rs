@@ -1,5 +1,5 @@
 use regex::Regex;
-use crate::aoc_common::{sum, sum_up_with_rule};
+use crate::aoc_common::main::{sum, sum_up_with_rule};
 
 const FIRST_DIGIT_ONLY_STR: &str = "\\d";
 const FIRST_DIGIT_OR_WORD_STR: &str = "\\d|one|two|three|four|five|six|seven|eight|nine";
@@ -124,19 +124,19 @@ mod sum_calibration_values_tests {
 
     #[test]
     fn test_sum_calibration_values_part1() {
-        assert_eq!(sum_calibration_values("data/day01-part1-test.txt", "digits"), 142);
+        assert_eq!(sum_calibration_values("data/day01/part1_test.txt", "digits"), 142);
     }
 
     #[test]
     fn test_sum_calibration_values_part2() {
-        assert_eq!(sum_calibration_values("data/day01-part2-test.txt", "words"), 281);
+        assert_eq!(sum_calibration_values("data/day01/part2_test.txt", "words"), 281);
     }
 }
 
 pub fn part1() {
-    println!("Day 1 Part 1 result: {}", sum_calibration_values("data/day01-input.txt", "digits"));
+    println!("Day 1 Part 1 result: {}", sum_calibration_values("data/day01/input.txt", "digits"));
 }
 
 pub fn part2() {
-    println!("Day 1 Part 2 result: {}", sum_calibration_values("data/day01-input.txt", "words"));
+    println!("Day 1 Part 2 result: {}", sum_calibration_values("data/day01/input.txt", "words"));
 }

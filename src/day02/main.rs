@@ -1,5 +1,5 @@
 use std::collections::HashMap;
-use crate::aoc_common::{sum, sum_up, sum_up_with_rule};
+use crate::aoc_common::main::{sum, sum_up, sum_up_with_rule};
 
 fn get_rgb_for_phrase(round: &str) -> HashMap<&str, i32> {
     let mut colour_map = HashMap::new();
@@ -384,7 +384,7 @@ mod sum_possible_game_ids_tests {
 
     #[test]
     fn test_sum_possible_game_ids_part1() {
-        assert_eq!(sum_possible_game_ids("data/day02-test.txt", "12 red, 13 green, 14 blue"), 8);
+        assert_eq!(sum_possible_game_ids("data/day02/test.txt", "12 red, 13 green, 14 blue"), 8);
     }
 }
 
@@ -398,14 +398,14 @@ mod sum_game_powers_tests {
 
     #[test]
     fn test_sum_game_powers_part2() {
-        assert_eq!(sum_game_powers("data/day02-test.txt"), 2286);
+        assert_eq!(sum_game_powers("data/day02/test.txt"), 2286);
     }
 }
 
 pub fn part1() {
-    println!("Day 2 Part 1 result: {}", sum_possible_game_ids("data/day02-input.txt", "12 red, 13 green, 14 blue"));
+    println!("Day 2 Part 1 result: {}", sum_possible_game_ids("data/day02/input.txt", "12 red, 13 green, 14 blue"));
 }
 
 pub fn part2() {
-    println!("Day 2 Part 2 result: {}", sum_game_powers("data/day02-input.txt"));
+    println!("Day 2 Part 2 result: {}", sum_game_powers("data/day02/input.txt"));
 }

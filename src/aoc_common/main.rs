@@ -28,7 +28,7 @@ mod line_iterator_tests {
 
     #[test]
     fn test_line_iterator() {
-        let lines = line_iterator("data/aoc_common-ints.txt");
+        let lines = line_iterator("data/aoc_common/test_data.txt");
         let line: Vec<String> = lines.collect();
         assert_eq!(line.len(), 5);
         assert_eq!(line[0].as_str(), "1");
@@ -53,7 +53,7 @@ mod sum_up_tests {
 
     #[test]
     fn test_sum_up() {
-        assert_eq!(sum_up("data/aoc_common-ints.txt", int_value, sum), 15);
+        assert_eq!(sum_up("data/aoc_common/test_data.txt", int_value, sum), 15);
     }
 }
 
@@ -77,11 +77,11 @@ mod sum_up_with_rule_tests {
 
     #[test]
     fn test_sum_up_with_rule_empty() {
-        assert_eq!(sum_up_with_rule("data/aoc_common-ints.txt", int_value_with_rule, sum, ""), 15);
+        assert_eq!(sum_up_with_rule("data/aoc_common/test_data.txt", int_value_with_rule, sum, ""), 15);
     }
 
     #[test]
     fn test_sum_up_with_rule_count() {
-        assert_eq!(sum_up_with_rule("data/aoc_common-ints.txt", int_value_with_rule, sum, "count"), 5);
+        assert_eq!(sum_up_with_rule("data/aoc_common/test_data.txt", int_value_with_rule, sum, "count"), 5);
     }
 }
