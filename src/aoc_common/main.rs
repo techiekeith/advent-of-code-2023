@@ -2,6 +2,27 @@ use std::fs::File;
 use std::io::{BufRead, BufReader, Lines};
 use std::iter::FilterMap;
 
+pub fn get_series_of_ints<T: std::str::FromStr>(source: &str) -> Vec<T> {
+    return source.split(" ").filter_map(|n| n.parse::<T>().ok()).collect();
+}
+
+#[cfg(test)]
+mod get_series_of_ints_tests {
+    use super::*;
+
+    #[test]
+    fn test_get_series_of_ints_empty() {
+        let numbers: Vec<i32> = get_series_of_ints("");
+        assert_eq!(numbers.is_empty(), true);
+    }
+
+    #[test]
+    fn test_get_series_of_ints() {
+        let numbers: Vec<i32> = get_series_of_ints("41 48 83 86 17");
+        assert_eq!(numbers.len(), 5);
+    }
+}
+
 pub fn sum(a: i32, b: i32) -> i32 {
     return a + b;
 }

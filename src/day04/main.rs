@@ -1,25 +1,4 @@
-use crate::aoc_common::main::{line_iterator, sum, sum_up};
-
-fn get_space_separated_numbers(source: &str) -> Vec<i32> {
-    return source.split(" ").filter_map(|n| n.parse::<i32>().ok()).collect();
-}
-
-#[cfg(test)]
-mod get_space_separated_numbers_tests {
-    use super::*;
-
-    #[test]
-    fn test_get_space_separated_numbers_empty() {
-        let numbers = get_space_separated_numbers("");
-        assert_eq!(numbers.is_empty(), true);
-    }
-
-    #[test]
-    fn test_get_space_separated_numbers() {
-        let numbers = get_space_separated_numbers("41 48 83 86 17");
-        assert_eq!(numbers.len(), 5);
-    }
-}
+use crate::aoc_common::main::{get_series_of_ints, line_iterator, sum, sum_up};
 
 fn get_scratchcard_numbers(line: &str) -> Option<(i32, Vec<i32>, Vec<i32>)> {
     let colon = line.find(':');
@@ -29,12 +8,12 @@ fn get_scratchcard_numbers(line: &str) -> Option<(i32, Vec<i32>, Vec<i32>)> {
     }
     let first = colon.unwrap();
     let second = pipe.unwrap();
-    let card_numbers = get_space_separated_numbers(&line[..first]);
+    let card_numbers = get_series_of_ints(&line[..first]);
     if card_numbers.len() != 1 {
         return None;
     }
-    let winners = get_space_separated_numbers(&line[first..second]);
-    let selected = get_space_separated_numbers(&line[second..]);
+    let winners = get_series_of_ints(&line[first..second]);
+    let selected = get_series_of_ints(&line[second..]);
     return Some((card_numbers[0], winners, selected));
 }
 
