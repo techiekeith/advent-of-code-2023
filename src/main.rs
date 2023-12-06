@@ -4,13 +4,15 @@ mod day02;
 mod day03;
 mod day04;
 mod day05;
+mod day06;
 
-const DAY_FUNCTIONS: [[fn();2];5] = [
+const DAY_FUNCTIONS: [[fn();2];6] = [
     [day01::main::part1, day01::main::part2],
     [day02::main::part1, day02::main::part2],
     [day03::main::part1, day03::main::part2],
     [day04::main::part1, day04::main::part2],
     [day05::main::part1, day05::main::part2],
+    [day06::main::part1, day06::main::part2],
 ];
 
 fn main() {
