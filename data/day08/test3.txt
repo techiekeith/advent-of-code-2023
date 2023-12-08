@@ -1,0 +1,10 @@
+LR
+
+NNA = (NNB, XXX)
+NNB = (XXX, NNZ)
+NNZ = (NNB, XXX)
+TTA = (TTB, XXX)
+TTB = (TTC, TTC)
+TTC = (TTZ, TTZ)
+TTZ = (TTB, TTB)
+XXX = (XXX, XXX)
