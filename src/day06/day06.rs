@@ -1,4 +1,4 @@
-use crate::aoc_common::main::{get_series_of_ints, line_iterator};
+use crate::aoc_common::lib::{get_series_of_ints, line_iterator};
 
 fn calculate_distance(len: i64, hold: i64) -> i64 {
     return hold * (len - hold);

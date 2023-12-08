@@ -1,5 +1,5 @@
 use std::collections::HashMap;
-use crate::aoc_common::main::{sum, sum_up, sum_up_with_rule};
+use crate::aoc_common::lib::{sum, sum_up, sum_up_with_rule};
 
 fn get_rgb_for_phrase(round: &str) -> HashMap<&str, i32> {
     let mut colour_map = HashMap::new();

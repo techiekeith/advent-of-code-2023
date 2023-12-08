@@ -1,6 +1,6 @@
 use std::cmp::Ordering;
 use std::collections::HashMap;
-use crate::aoc_common::main::line_iterator;
+use crate::aoc_common::lib::line_iterator;
 
 #[derive(Clone, Debug, Eq, PartialEq)]
 struct Hand {

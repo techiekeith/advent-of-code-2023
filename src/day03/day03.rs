@@ -1,4 +1,4 @@
-use crate::aoc_common::main::line_iterator;
+use crate::aoc_common::lib::line_iterator;
 
 struct Number {
     value: i32,

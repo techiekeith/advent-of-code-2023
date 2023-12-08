@@ -1,5 +1,5 @@
 use regex::Regex;
-use crate::aoc_common::main::{sum, sum_up_with_rule};
+use crate::aoc_common::lib::{sum, sum_up_with_rule};
 
 const FIRST_DIGIT_ONLY_STR: &str = "\\d";
 const FIRST_DIGIT_OR_WORD_STR: &str = "\\d|one|two|three|four|five|six|seven|eight|nine";

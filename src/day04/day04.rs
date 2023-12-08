@@ -1,4 +1,4 @@
-use crate::aoc_common::main::{get_series_of_ints, line_iterator, sum, sum_up};
+use crate::aoc_common::lib::{get_series_of_ints, line_iterator, sum, sum_up};
 
 fn get_scratchcard_numbers(line: &str) -> Option<(i32, Vec<i32>, Vec<i32>)> {
     let colon = line.find(':');

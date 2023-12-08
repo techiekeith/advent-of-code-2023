@@ -1,4 +1,4 @@
-use crate::aoc_common::main::{get_series_of_ints, line_iterator};
+use crate::aoc_common::lib::{get_series_of_ints, line_iterator};
 
 #[derive(Copy, Clone)]
 struct Mapping {
