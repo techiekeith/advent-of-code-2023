@@ -12,3 +12,4 @@ license = "MIT"
 
 [dependencies]
 regex = "1.10.2"
+num = "0.4.1"

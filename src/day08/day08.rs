@@ -11,29 +11,6 @@ struct Node {
 const AAA_NODE: i16 = 0;
 const ZZZ_NODE: i16 = 17575; // (26 * 26 * 26) - 1
 
-fn node_str(node_id: i16) -> String {
-    let mut chars: [char; 3] = ['\0'; 3];
-    let mut id = node_id;
-    for index in 0..3 {
-        chars[2-index] = (65 + id % 26) as u8 as char;
-        id = id / 26;
-    }
-    return chars.iter().collect();
-}
-
-#[cfg(test)]
-mod node_str_tests {
-    use super::*;
-
-    #[test]
-    fn test_node_str() {
-        let abc_node = 28; // node_id("ABC").unwrap()
-        assert_eq!(node_str(AAA_NODE).as_str(), "AAA");
-        assert_eq!(node_str(abc_node).as_str(), "ABC");
-        assert_eq!(node_str(ZZZ_NODE).as_str(), "ZZZ");
-    }
-}
-
 fn node_id(from_string: &str) -> Option<i16> {
     if from_string.len() != 3 {
         return None;

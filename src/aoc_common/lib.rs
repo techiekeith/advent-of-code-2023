@@ -1,6 +1,7 @@
 use std::fs::File;
 use std::io::{BufRead, BufReader, Lines};
 use std::iter::FilterMap;
+use num::Num;
 
 pub fn get_series_of_ints<T: std::str::FromStr>(source: &str) -> Vec<T> {
     return source.split(" ").filter_map(|n| n.parse::<T>().ok()).collect();
@@ -23,7 +24,7 @@ mod get_series_of_ints_tests {
     }
 }
 
-pub fn sum(a: i32, b: i32) -> i32 {
+pub fn sum<T: Num>(a: T, b: T) -> T {
     return a + b;
 }
 
@@ -57,11 +58,11 @@ mod line_iterator_tests {
     }
 }
 
-pub fn sum_up(filename: &str, map_function: fn(&str) -> i32, reduce_function: fn(i32, i32) -> i32) -> i32 {
+pub fn sum_up<T: Num>(filename: &str, map_function: fn(&str) -> T, reduce_function: fn(T, T) -> T) -> T {
     return line_iterator(filename)
         .map(|line| map_function(line.as_str()))
         .reduce(reduce_function)
-        .unwrap_or(0);
+        .unwrap_or(num::zero::<T>());
 }
 
 #[cfg(test)]
@@ -78,11 +79,11 @@ mod sum_up_tests {
     }
 }
 
-pub fn sum_up_with_rule(filename: &str, map_function: fn(&str, &str) -> i32, reduce_function: fn(i32, i32) -> i32, rule: &str) -> i32 {
+pub fn sum_up_with_rule<T: Num>(filename: &str, map_function: fn(&str, &str) -> T, reduce_function: fn(T, T) -> T, rule: &str) -> T {
     return line_iterator(filename)
         .map(|line| map_function(line.as_str(), rule))
         .reduce(reduce_function)
-        .unwrap_or(0);
+        .unwrap_or(num::zero::<T>());
 }
 
 #[cfg(test)]
